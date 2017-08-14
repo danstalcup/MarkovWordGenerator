@@ -12,4 +12,3 @@ C:\Users\Dan\Dropbox\Programming\MarkovWord\MarkovWordGenerator\MarkovWord\bin\D
 C:\Users\Dan\Dropbox\Programming\MarkovWord\MarkovWordGenerator\MarkovWord\bin\Debug\MarkovWord.pdb
 C:\Users\Dan\Dropbox\Programming\MarkovWord\MarkovWordGenerator\MarkovWord\bin\Debug\nunit.framework.dll
 C:\Users\Dan\Dropbox\Programming\MarkovWord\MarkovWordGenerator\MarkovWord\bin\Debug\nunit.framework.xml
-C:\Users\Dan\Dropbox\Programming\MarkovWord\MarkovWordGenerator\MarkovWord\obj\Debug\MarkovWord.csprojResolveAssemblyReference.cache

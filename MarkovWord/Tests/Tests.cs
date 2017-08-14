@@ -76,5 +76,26 @@ namespace MarkovWord.Tests
             Assert.That(nextLetter.Weight, Is.EqualTo(.4));
             Assert.That(nextLetter.CumulativeWeight, Is.EqualTo(.9));
         }
+
+        [Test]
+        public void Letter_Constructor_CorrectNextLetters()
+        {
+            // Act
+            var letter = new Letter("e,x [0.5%],a [0.4%]");
+            var nextLetterX = letter.NextLetters[0];
+            var nextLetterA = letter.NextLetters[1];
+            
+
+            // Assert
+            Assert.That(letter.NextLetters.Count == 2);
+
+            Assert.That(nextLetterX.Letter, Is.EqualTo("x"));
+            Assert.That(nextLetterX.Weight, Is.EqualTo(.5));
+            Assert.That(nextLetterX.CumulativeWeight, Is.EqualTo(.5));
+
+            Assert.That(nextLetterA.Letter, Is.EqualTo("a"));
+            Assert.That(nextLetterA.Weight, Is.EqualTo(.4));
+            Assert.That(nextLetterA.CumulativeWeight, Is.EqualTo(.9));
+        }
     }
 }
