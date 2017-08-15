@@ -20,7 +20,7 @@ namespace MarkovWord
             ProcessLinesToLetters();
         }
 
-        private void ProcessLinesToLetters()
+        public void ProcessLinesToLetters()
         {
             Letters = RawData.Skip(1).Select(line => new Letter(line)).ToList();
         }
@@ -31,14 +31,14 @@ namespace MarkovWord
             ProcessLinesToLetters();
         }
 
-        public StringBuilder StartWord()
+        public StringBuilder StartWord(double weight)
         {
-            return new StringBuilder(GetFirstLetter());
+            return new StringBuilder(GetFirstLetter(weight));
         }
 
-        public string GetFirstLetter()
+        public string GetFirstLetter(double weight)
         {
-            return string.Empty;
+            return GetLetter(" ").NextLetter(weight).Letter;
         }
 
         public Letter GetLetter(string letter)

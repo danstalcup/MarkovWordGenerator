@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace MarkovWord
 {
@@ -41,9 +42,9 @@ namespace MarkovWord
             }
         }
 
-        public NextLetter NextLetter(Random random)
+        public NextLetter NextLetter(double weight)
         {
-            throw new NotImplementedException();
+            return NextLetters.FirstOrDefault(nl => nl.CumulativeWeight > weight);
         }        
     }
 }
