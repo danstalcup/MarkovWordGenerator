@@ -1,4 +1,4 @@
-# MarkovWordGenerator
+# Markov Chain Word Generator
 
 This is a console application that uses very simple Markov chains based on the probability that one letter follows another letter to randomly generate fictional English words.
 
