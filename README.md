@@ -9,7 +9,7 @@ Check it out by downloading [this ZIP](https://github.com/danstalcup/MarkovWordG
 * The second parameter (if provided) is the seed used for randomizing. Default is system default.
 * The third parameter (if provided) is the data source filepath. Default is `letterprobabilities.csv`
 * Example: `./MarkovWord.exe 50 1234 data.csv`
-* This would generate 50 words, using seed 1234, with letter data pulled from data.csv
+* This would generate 50 words, using seed 1234, with letter data pulled from `./data.csv`
 
 Based off of this [reddit post](https://www.reddit.com/r/dataisbeautiful/comments/6rk2yr/letter_and_nextletter_frequencies_in_english_oc/).
 
