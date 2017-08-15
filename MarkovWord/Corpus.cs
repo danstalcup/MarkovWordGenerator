@@ -8,6 +8,7 @@ namespace MarkovWord
     {
         public List<Letter> Letters { get; set; }
         public string[] RawData { get; set; }
+        public double FirstLetterTotalWeight => GetLetter(" ").TotalWeight;
 
         public Corpus()
         {
@@ -33,12 +34,12 @@ namespace MarkovWord
 
         public StringBuilder StartWord(double weight)
         {
-            return new StringBuilder(GetFirstLetter(weight));
+            return new StringBuilder(GetFirstLetter(weight).Letter);
         }
 
-        public string GetFirstLetter(double weight)
+        public NextLetter GetFirstLetter(double weight)
         {
-            return GetLetter(" ").NextLetter(weight).Letter;
+            return GetLetter(" ").NextLetter(weight);
         }
 
         public Letter GetLetter(string letter)

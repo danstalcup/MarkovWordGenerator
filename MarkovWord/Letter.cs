@@ -12,6 +12,8 @@ namespace MarkovWord
         public string CoreLetter { get; set; }
         public List<NextLetter> NextLetters { get; set; }
 
+        public double TotalWeight => NextLetters.Count > 0 ? NextLetters.Sum(nl => nl.Weight) : 0;
+
         public string[] Chunks { get; set; }
 
         public Letter(string line)

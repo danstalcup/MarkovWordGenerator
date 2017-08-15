@@ -14,6 +14,8 @@ namespace MarkovWord
 
         public Random Random { get; set; }
 
+        public const int NoSeed = -1;        
+
         public WordGenerator()
         { }
 
@@ -23,9 +25,10 @@ namespace MarkovWord
             Initialize();
         }
 
-        public void Initialize()
+        public void Initialize(int seed = NoSeed)
         {
-            Corpus = new Corpus(DataFilepath);            
+            Corpus = new Corpus(DataFilepath);
+            Random = seed == NoSeed ? new Random() : new Random(seed);            
         }
 
         public string GetWords(int count=1)
@@ -40,7 +43,21 @@ namespace MarkovWord
 
         public string GetWord()
         {
-            throw new NotImplementedException();
+            var word = new StringBuilder();
+            var nextLetter = Corpus.GetFirstLetter(Random.NextDouble() * Corpus.FirstLetterTotalWeight);
+            while (nextLetter.Letter != " ")
+            {
+                word.Append(nextLetter.Letter);
+                var currentLetter = Corpus.GetLetter(nextLetter.Letter);
+                nextLetter = NextLetterInWord(currentLetter);
+            }
+
+            return word.ToString();
+        }
+
+        private NextLetter NextLetterInWord(Letter currentLetter)
+        {
+            return currentLetter.NextLetter(Random.NextDouble() * currentLetter.TotalWeight);
         }
     }
 }

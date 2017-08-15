@@ -137,10 +137,10 @@ namespace MarkovWord.Tests
         public void Letter_NextLetter_NoLetterGivenTooLargeWeight()
         {
             // Act
-            var nextLetter = new Letter("s,p [5.0%],a [7.5%],j [9.0%]").NextLetter(21.5);
+            var result = new Letter("s,p [5.0%],a [7.5%],j [9.0%]").NextLetter(21.5);
 
             // Assert
-            Assert.That(nextLetter, Is.Null);
+            Assert.That(result, Is.Null);
         }
 
         [TestCase(0, "p")]
@@ -162,11 +162,41 @@ namespace MarkovWord.Tests
             corpus.ProcessLinesToLetters();
 
             // Act
-            var result = corpus.GetFirstLetter(weight);
+            var result = corpus.GetFirstLetter(weight).Letter;
 
             // Assert
             Assert.That(result, Is.EqualTo(expected));
 
         }
+
+        [Test]
+        public void Letter_TotalWeight_CorrectSum()
+        {
+            // Act
+            var result = new Letter("s,p [5.0%],a [7.5%],j [9.0%]").TotalWeight;
+
+            // Assert
+            Assert.That(result, Is.EqualTo(21.5));
+        }
+
+        [Test]
+        public void Corpus_FirstLetterTotalWeight_CorrectSum()
+        {
+            // Arrange
+            var rawData = new string[]
+            {
+                "dummy",
+                "e,x [0.5%],a [0.4%]",
+                " ,p [5.0%],a [7.5%],j [9.0%]"
+            };
+            var corpus = new Corpus { RawData = rawData };
+            corpus.ProcessLinesToLetters();
+
+            // Act
+            var result = corpus.FirstLetterTotalWeight;
+
+            // Assert
+            Assert.That(result, Is.EqualTo(21.5));
+        }        
     }
 }
